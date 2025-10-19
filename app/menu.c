@@ -47,7 +47,7 @@
 #endif
 
 uint8_t gUnlockAllTxConfCnt;
-
+extern uint8_t gLanguage;
 #ifdef ENABLE_F_CAL_MENU
 	void writeXtalFreqCal(const int32_t value, const bool update_eeprom)
 	{
@@ -171,6 +171,11 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 				*pMax = ARRAY_SIZE(gSubMenu_VOICE) - 1;
 				break;
 		#endif
+
+		case MENU_LANG:
+			*pMin = 0;
+			*pMax = 1;
+			break;
 
 		case MENU_SC_REV:
 			*pMin = 0;
@@ -559,6 +564,10 @@ void MENU_AcceptSetting(void)
 				gUpdateStatus        = true;
 				break;
 		#endif
+
+		case MENU_LANG:
+			gEeprom.LANGUAGE = gSubMenuSelection;
+		break;
 
 		case MENU_SC_REV:
 			gEeprom.SCAN_RESUME_MODE = gSubMenuSelection;
@@ -963,6 +972,9 @@ void MENU_ShowCurrentSetting(void)
 			gSubMenuSelection = gEeprom.VOICE_PROMPT;
 			break;
 #endif
+		case MENU_LANG:
+			gSubMenuSelection = gEeprom.LANGUAGE;
+			break;
 
 		case MENU_SC_REV:
 			gSubMenuSelection = gEeprom.SCAN_RESUME_MODE;

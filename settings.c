@@ -41,6 +41,7 @@ EEPROM_Config_t gEeprom = { 0 };
 void SETTINGS_InitEEPROM(void)
 {
 	uint8_t Data[16] = {0};
+	gEeprom.LANGUAGE = 0;
 	// 0E70..0E77
 	EEPROM_ReadBuffer(0x0E70, Data, 8);
 	gEeprom.CHAN_1_CALL          = IS_MR_CHANNEL(Data[0]) ? Data[0] : MR_CHANNEL_FIRST;

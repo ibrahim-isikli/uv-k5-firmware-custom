@@ -61,6 +61,7 @@ enum
 #ifdef ENABLE_VOICE
 	MENU_VOICE,
 #endif
+	MENU_LANG,
 	MENU_SC_REV,
 	MENU_AUTOLK,
 	MENU_S_ADD1,
@@ -128,6 +129,8 @@ enum
 
 extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
 extern const t_menu_item MenuList[];
+extern const t_menu_item MenuList_TR[];
+extern const t_menu_item *ActiveMenuList;
 
 extern const char        gSubMenu_TXP[3][5];
 extern const char        gSubMenu_SFT_D[3][4];
@@ -140,6 +143,7 @@ extern const char* const gSubMenu_RXMode[4];
 #ifdef ENABLE_VOICE
 	extern const char    gSubMenu_VOICE[3][4];
 #endif
+extern const char 		 gSubMenu_LANG[][8];
 extern const char        gSubMenu_SC_REV[3][8];
 extern const char* const gSubMenu_MDF[4];
 #ifdef ENABLE_ALARM
@@ -176,5 +180,6 @@ extern int               edit_index;
 void UI_DisplayMenu(void);
 int UI_MENU_GetCurrentMenuId();
 uint8_t UI_MENU_GetMenuIdx(uint8_t id);
+void UI_SetLanguage(uint8_t lang);
 
 #endif
