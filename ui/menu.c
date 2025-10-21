@@ -320,7 +320,7 @@ const char* const gSubMenu_RXMode[] =
 	};
 #endif
 
-const char gSubMenu_LANG[3][8] =
+const char gSubMenu_LANG[2][8] =
 {
 	"ENGLISH",
 	"TURKISH"
@@ -1091,6 +1091,18 @@ void UI_DisplayMenu(void)
 
 void UI_SetLanguage(uint8_t lang)
 {
+	// test
+	if (lang == 1) 
+	{
+        BK4819_ToggleGpioOut(BK4819_GPIO5_PIN1_RED, true);
+    } 
+	else if (lang == 0)
+	{
+        BK4819_ToggleGpioOut(BK4819_GPIO6_PIN2_GREEN, true);
+    }
+
     gLanguage = lang;
     ActiveMenuList = (lang == 1) ? MenuList_TR : MenuList;
+	
+	
 }

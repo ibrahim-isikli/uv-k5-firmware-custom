@@ -143,7 +143,7 @@ extern const char* const gSubMenu_RXMode[4];
 #ifdef ENABLE_VOICE
 	extern const char    gSubMenu_VOICE[3][4];
 #endif
-extern const char 		 gSubMenu_LANG[3][8];
+extern const char 		 gSubMenu_LANG[2][8];
 extern const char        gSubMenu_SC_REV[3][8];
 extern const char* const gSubMenu_MDF[4];
 #ifdef ENABLE_ALARM

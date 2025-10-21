@@ -567,6 +567,8 @@ void MENU_AcceptSetting(void)
 
 		case MENU_LANG:
 			gEeprom.LANGUAGE = gSubMenuSelection;
+			gSetting_language = gSubMenuSelection;
+			UI_SetLanguage(gSubMenuSelection);
 		break;
 
 		case MENU_SC_REV:
@@ -974,6 +976,7 @@ void MENU_ShowCurrentSetting(void)
 #endif
 		case MENU_LANG:
 			gSubMenuSelection = gEeprom.LANGUAGE;
+			gSubMenuSelection = gSetting_language;
 			break;
 
 		case MENU_SC_REV:
