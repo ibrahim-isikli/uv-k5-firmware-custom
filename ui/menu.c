@@ -320,7 +320,7 @@ const char* const gSubMenu_RXMode[] =
 	};
 #endif
 
-const char gSubMenu_LANG[][8] =
+const char gSubMenu_LANG[3][8] =
 {
 	"ENGLISH",
 	"TURKISH"

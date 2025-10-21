@@ -174,7 +174,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_LANG:
 			*pMin = 0;
-			*pMax = 1;
+			*pMax = ARRAY_SIZE(gSubMenu_LANG) - 1;
 			break;
 
 		case MENU_SC_REV:
