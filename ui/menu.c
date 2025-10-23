@@ -260,9 +260,24 @@ const char gSubMenu_TXP[][5] =
 	"HIGH"
 };
 
+const char gSubMenu_TXP_TR[][6] =
+{
+	"AZ",
+	"ORTA",
+	"COK"
+};
+
 const char gSubMenu_SFT_D[][4] =
 {
 	"OFF",
+	"+",
+	"-"
+};
+
+
+const char gSubMenu_SFT_D_TR[][4] =
+{
+	"KAPA",
 	"+",
 	"-"
 };
@@ -273,15 +288,37 @@ const char gSubMenu_W_N[][7] =
 	"NARROW"
 };
 
+const char gSubMenu_W_N_TR[][7] =
+{
+	"GENIS",
+	"DAR"
+};
+
 const char gSubMenu_OFF_ON[][4] =
 {
 	"OFF",
 	"ON"
 };
 
+
+const char gSubMenu_OFF_ON_TR[][4] =
+{
+	"KAPA",
+	"AC"
+};
+
 const char gSubMenu_SAVE[][4] =
 {
 	"OFF",
+	"1:1",
+	"1:2",
+	"1:3",
+	"1:4"
+};
+
+const char gSubMenu_SAVE_TR[][4] =
+{
+	"KAPA",
 	"1:1",
 	"1:2",
 	"1:3",
@@ -303,12 +340,36 @@ const char gSubMenu_TOT[][7] =
 	"15 min"
 };
 
+
+const char gSubMenu_TOT_TR[][7] =
+{
+	"30 s",
+	"1 dk",
+	"2 dk",
+	"3 dk",
+	"4 dk",
+	"5 dk",
+	"6 dk",
+	"7 dk",
+	"8 dk",
+	"9 dk",
+	"15 dk"
+};
+
 const char* const gSubMenu_RXMode[] =
 {
 	"MAIN\nONLY", 		// TX and RX on main only
 	"DUAL RX\nRESPOND", // Watch both and respond
 	"CROSS\nBAND", 		// TX on main, RX on secondary
 	"MAIN TX\nDUAL RX" 	// always TX on main, but RX on both
+};
+
+const char* const gSubMenu_RXMode_TR[] =
+{
+	"SADECE\nANA", 		// TX and RX on main only
+	"CIFT ALICI\nYANIT", // Watch both and respond
+	"CAPRAZ\nBANT", 		// TX on main, RX on secondary
+	"ANA VERICI\nCIFT ALICI" 	// always TX on main, but RX on both
 };
 
 #ifdef ENABLE_VOICE
@@ -318,6 +379,13 @@ const char* const gSubMenu_RXMode[] =
 		"CHI",
 		"ENG"
 	};
+
+	const char gSubMenu_VOICE_TR[][4] =
+	{
+		"KAPA",
+		"CINC",
+		"INGL"
+	};
 #endif
 
 const char gSubMenu_LANG[2][8] =
@@ -326,11 +394,24 @@ const char gSubMenu_LANG[2][8] =
 	"TURKISH"
 };
 
+const char gSubMenu_LANG_TR[2][8] =
+{
+	"INGILZCE",
+	"TURKCE"
+};
+
 const char gSubMenu_SC_REV[][8] =
 {
 	"TIMEOUT",
 	"CARRIER",
 	"STOP"
+};
+
+const char gSubMenu_SC_REV_TR[][8] =
+{
+	"ZMN ASIM",
+	"TASIYICI",
+	"DUR"
 };
 
 const char* const gSubMenu_MDF[] =
@@ -341,11 +422,24 @@ const char* const gSubMenu_MDF[] =
 	"NAME\n+\nFREQ"
 };
 
+const char* const gSubMenu_MDF_TR[] =
+{
+	"FREKANS",
+	"KANAL\nNUMARA",
+	"ISIM",
+	"ISIM\n+\nFREK"
+};
+
 #ifdef ENABLE_ALARM
 	const char gSubMenu_AL_MOD[][5] =
 	{
 		"SITE",
 		"TONE"
+	};
+	const char gSubMenu_AL_MOD_TR[][5] =
+	{
+		"SITE",
+		"TON"
 	};
 #endif
 
@@ -357,9 +451,24 @@ const char gSubMenu_D_RSP[][11] =
 	"REPLY",
 	"BOTH"
 };
+const char gSubMenu_D_RSP_TR[][11] =
+{
+	"BISI\nYAPMA",
+	"ZIL",
+	"TEKRAR",
+	"CIFTI"
+};
 #endif
 
 const char* const gSubMenu_PTT_ID[] =
+{
+	"OFF",
+	"UP CODE",
+	"DOWN CODE",
+	"UP+DOWN\nCODE",
+	"APOLLO\nQUINDAR"
+};
+const char* const gSubMenu_PTT_ID_TR[] =
 {
 	"OFF",
 	"UP CODE",
@@ -376,9 +485,24 @@ const char gSubMenu_PONMSG[][8] =
 	"NONE"
 };
 
+const char gSubMenu_PONMSG_TR[][8] =
+{
+	"TUMU",
+	"MESAJ",
+	"VOLTAJ",
+	"YOK"
+};
+
 const char gSubMenu_ROGER[][6] =
 {
 	"OFF",
+	"ROGER",
+	"MDC"
+};
+
+const char gSubMenu_ROGER_TR[][6] =
+{
+	"KAPA",
 	"ROGER",
 	"MDC"
 };
@@ -387,6 +511,12 @@ const char gSubMenu_RESET[][4] =
 {
 	"VFO",
 	"ALL"
+};
+
+const char gSubMenu_RESET_TR[][4] =
+{
+	"VFO",
+	"TUMU"
 };
 
 const char * const gSubMenu_F_LOCK[] =
@@ -401,6 +531,18 @@ const char * const gSubMenu_F_LOCK[] =
 	"UNLOCK\nALL",
 };
 
+const char * const gSubMenu_F_LOCK_TR[] =
+{
+	"NORMAL+\n137-174\n400-470",
+	"FCC HAM\n144-148\n420-450",
+	"CE HAM\n144-146\n430-440",
+	"GB HAM\n144-148\n430-440",
+	"137-174\n400-430",
+	"137-174\n400-438",
+	"KAPALI\nALL",
+	"KILIT\nALL",
+};
+
 const char gSubMenu_BACKLIGHT[][7] =
 {
 	"OFF",
@@ -413,6 +555,18 @@ const char gSubMenu_BACKLIGHT[][7] =
 	"ON"
 };
 
+const char gSubMenu_BACKLIGHT_TR[][7] =
+{
+	"KAPA",
+	"5 s",
+	"10 s",
+	"20 S",
+	"1 dk",
+	"2 dk",
+	"4 dk",
+	"AC"
+};
+
 const char gSubMenu_RX_TX[][6] =
 {
 	"OFF",
@@ -421,11 +575,26 @@ const char gSubMenu_RX_TX[][6] =
 	"TX/RX"
 };
 
+const char gSubMenu_RX_TX_TR[][6] =
+{
+	"KAPA",
+	"ALICI",
+	"VERCI",
+	"CIFTI"
+};
+
 const char gSubMenu_BAT_TXT[][8] =
 {
 	"NONE",
 	"VOLTAGE",
 	"PERCENT"
+};
+
+const char gSubMenu_BAT_TXT_TR[][8] =
+{
+	"YOK",
+	"VOLTAJ",
+	"YUZDELIK"
 };
 
 const char gSubMenu_BATTYP[][9] =
@@ -437,6 +606,21 @@ const char gSubMenu_BATTYP[][9] =
 const char gSubMenu_SCRAMBLER[][7] =
 {
 	"OFF",
+	"2600Hz",
+	"2700Hz",
+	"2800Hz",
+	"2900Hz",
+	"3000Hz",
+	"3100Hz",
+	"3200Hz",
+	"3300Hz",
+	"3400Hz",
+	"3500Hz"
+};
+
+const char gSubMenu_SCRAMBLER_TR[][7] =
+{
+	"KAPA",
 	"2600Hz",
 	"2700Hz",
 	"2800Hz",
@@ -479,6 +663,39 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
 #endif
 #ifdef ENABLE_SPECTRUM
 	{"SPECTRUM",         ACTION_OPT_SPECTRUM}
+#endif
+};
+
+const t_sidefunction gSubMenu_SIDEFUNCTIONS_TR[] =
+{
+	{"YOK",			ACTION_OPT_NONE},
+#ifdef ENABLE_FLASHLIGHT
+	{"FLASH\nLIGHT",	ACTION_OPT_FLASHLIGHT},
+#endif
+	{"GUC",			ACTION_OPT_POWER},
+	{"MONITOR",			ACTION_OPT_MONITOR},
+	{"TARA",			ACTION_OPT_SCAN},
+#ifdef ENABLE_VOX
+	{"VOX",				ACTION_OPT_VOX},
+#endif
+#ifdef ENABLE_ALARM
+	{"ALARM",			ACTION_OPT_ALARM},
+#endif
+#ifdef ENABLE_FMRADIO
+	{"FM RADYO",		ACTION_OPT_FM},
+#endif
+#ifdef ENABLE_TX1750
+	{"1750HZ",			ACTION_OPT_1750},
+#endif
+	{"TUSU\nKITLE",	ACTION_OPT_KEYLOCK},
+	{"DEGSTR\nVFO",		ACTION_OPT_A_B},
+	{"VFO/MR",			ACTION_OPT_VFO_MR},
+	{"DEGSTR\nDEMODUL",	ACTION_OPT_SWITCH_DEMODUL},
+#ifdef ENABLE_BLMIN_TMP_OFF
+	{"BLMIN\nTMP OFF",  ACTION_OPT_BLMIN_TMP_OFF}, 		//BackLight Minimum Temporay OFF
+#endif
+#ifdef ENABLE_SPECTRUM
+	{"SPEKTRUM",         ACTION_OPT_SPECTRUM}
 #endif
 };
 
@@ -631,7 +848,14 @@ void UI_DisplayMenu(void)
 		}
 
 		case MENU_TXP:
-			strcpy(String, gSubMenu_TXP[gSubMenuSelection]);
+			if (gSetting_language)
+			{
+				 strcpy(String, gSubMenu_TXP_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_TXP[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_R_DCS:
