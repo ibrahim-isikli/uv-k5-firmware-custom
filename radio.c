@@ -54,6 +54,17 @@ const char gModulationStr[MODULATION_UKNOWN][4] = {
 #endif
 };
 
+const char gModulationStr_TR[MODULATION_UKNOWN][4] = {
+	[MODULATION_FM]="FM",
+	[MODULATION_AM]="AM",
+	[MODULATION_USB]="USB",
+
+#ifdef ENABLE_BYP_RAW_DEMODULATORS
+	[MODULATION_BYP]="BYP",
+	[MODULATION_RAW]="RAW"
+#endif
+};
+
 
 
 bool RADIO_CheckValidChannel(uint16_t channel, bool checkScanList, uint8_t scanList)

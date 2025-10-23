@@ -861,7 +861,12 @@ void UI_DisplayMenu(void)
 		case MENU_R_DCS:
 		case MENU_T_DCS:
 			if (gSubMenuSelection == 0)
-				strcpy(String, "OFF");
+			{
+				if(gSetting_language)
+					strcpy(String, "KAPA");
+				else
+					strcpy(String, "OFF");
+			}				
 			else if (gSubMenuSelection < 105)
 				sprintf(String, "D%03oN", DCS_Options[gSubMenuSelection -   1]);
 			else
@@ -872,14 +877,26 @@ void UI_DisplayMenu(void)
 		case MENU_T_CTCS:
 		{
 			if (gSubMenuSelection == 0)
-				strcpy(String, "OFF");
+			{
+				if(gSetting_language)
+					strcpy(String, "KAPA");
+				else
+					strcpy(String, "OFF");					
+			}
 			else
 				sprintf(String, "%u.%uHz", CTCSS_Options[gSubMenuSelection - 1] / 10, CTCSS_Options[gSubMenuSelection - 1] % 10);
 			break;
 		}
 
 		case MENU_SFT_D:
-			strcpy(String, gSubMenu_SFT_D[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_SFT_D_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_SFT_D[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_OFFSET:
@@ -901,11 +918,26 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_W_N:
-			strcpy(String, gSubMenu_W_N[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_W_N_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_W_N[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_SCR:
-			strcpy(String, gSubMenu_SCRAMBLER[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_SCRAMBLER_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_SCRAMBLER[gSubMenuSelection]);
+			}
+			
 			#if 1
 				if (gSubMenuSelection > 0 && gSetting_ScrambleEnable)
 					BK4819_EnableScramble(gSubMenuSelection - 1);
@@ -917,14 +949,26 @@ void UI_DisplayMenu(void)
 		#ifdef ENABLE_VOX
 			case MENU_VOX:
 				if (gSubMenuSelection == 0)
-					strcpy(String, "OFF");
+				{
+					if(gSetting_language)
+						strcpy(String, "KAPA");
+					else
+						strcpy(String, "OFF");
+				}
 				else
 					sprintf(String, "%d", gSubMenuSelection);
 				break;
 		#endif
 
 		case MENU_ABR:
-			strcpy(String, gSubMenu_BACKLIGHT[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_BACKLIGHT_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_BACKLIGHT[gSubMenuSelection]);
+			}
 			if(BACKLIGHT_GetBrightness() < 4)
 				BACKLIGHT_SetBrightness(4);
 			break;
@@ -939,16 +983,37 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_AM:
-			strcpy(String, gModulationStr[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gModulationStr_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gModulationStr[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_AUTOLK:
-			strcpy(String, (gSubMenuSelection == 0) ? "OFF" : "AUTO");
+			if(gSetting_language)
+			{
+				strcpy(String, (gSubMenuSelection == 0) ? "KAPA" : "OTO");
+			}
+			else
+			{
+				strcpy(String, (gSubMenuSelection == 0) ? "OFF" : "AUTO");
+			}
 			break;
 
 		case MENU_COMPAND:
 		case MENU_ABR_ON_TX_RX:
-			strcpy(String, gSubMenu_RX_TX[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_RX_TX_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_RX_TX[gSubMenuSelection]);
+			}
 			break;
 
 		#ifdef ENABLE_AM_FIX
@@ -972,7 +1037,14 @@ void UI_DisplayMenu(void)
 		case MENU_500TX:
 		case MENU_350EN:
 		case MENU_SCREN:
-			strcpy(String, gSubMenu_OFF_ON[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_OFF_ON_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_OFF_ON[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_MEM_CH:
@@ -1033,38 +1105,97 @@ void UI_DisplayMenu(void)
 		}
 
 		case MENU_SAVE:
-			strcpy(String, gSubMenu_SAVE[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_SAVE_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_SAVE[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_TDR:
-			strcpy(String, gSubMenu_RXMode[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_RXMode_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_RXMode[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_TOT:
-			strcpy(String, gSubMenu_TOT[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_TOT_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_TOT[gSubMenuSelection]);
+			}
 			break;
 
 		#ifdef ENABLE_VOICE
 			case MENU_VOICE:
-				strcpy(String, gSubMenu_VOICE[gSubMenuSelection]);
+				if(gSetting_language)
+				{
+					strcpy(String, gSubMenu_VOICE_TR[gSubMenuSelection]);
+				}
+				else
+				{
+					strcpy(String, gSubMenu_VOICE[gSubMenuSelection]);
+				}
 				break;
 		#endif
 		
 		case MENU_LANG:
-			strcpy(String, gSubMenu_LANG[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_LANG_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_LANG[gSubMenuSelection]);
+			}	
 			break;
 
 		case MENU_SC_REV:
-			strcpy(String, gSubMenu_SC_REV[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_SC_REV_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_SC_REV[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_MDF:
-			strcpy(String, gSubMenu_MDF[gSubMenuSelection]);
+			if(gSetting_language)
+			{
+				strcpy(String, gSubMenu_MDF_TR[gSubMenuSelection]);
+			}
+			else
+			{
+				strcpy(String, gSubMenu_MDF[gSubMenuSelection]);
+			}
 			break;
 
 		case MENU_RP_STE:
 			if (gSubMenuSelection == 0)
-				strcpy(String, "OFF");
+			{
+				if(gSetting_language)
+				{
+					strcpy(String, "KAPA");
+				}
+				else
+				{
+					strcpy(String, "OFF");
+				}
+			}
+				
 			else
 				sprintf(String, "%d*100ms", gSubMenuSelection);
 			break;
@@ -1073,7 +1204,16 @@ void UI_DisplayMenu(void)
 			if (gSubMenuSelection < 2)
 				sprintf(String, "LIST%u", 1 + gSubMenuSelection);
 			else
-				strcpy(String, "ALL");
+			{
+				if(gSetting_language)
+				{
+					strcpy(String, "TUMU");
+				}
+				else
+				{
+					strcpy(String, "ALL");
+				}
+			}
 			break;
 
 		#ifdef ENABLE_ALARM
