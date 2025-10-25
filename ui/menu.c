@@ -253,18 +253,18 @@ uint8_t gLanguage = 0; // 0 = EN, 1 = TR
 const t_menu_item *ActiveMenuList = MenuList;
 const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
 
-const char gSubMenu_TXP[][5] =
+
+
+const char gSubMenu_TXP[LANG_COUNT][TXP_COUNT][7] =
 {
-	"LOW",
-	"MID",
-	"HIGH"
+	{"LOW","MID","HIGH"},
+	{"DUSUK","ORTA","YUKSEK"}
 };
 
-const char gSubMenu_SFT_D[][4] =
+const char gSubMenu_SFT_D[LANG_COUNT][SFT_D_COUNT][5] =
 {
-	"OFF",
-	"+",
-	"-"
+	{"OFF","+","-"},
+	{"KAPA","+","-"}
 };
 
 const char gSubMenu_W_N[][7] =
@@ -631,7 +631,7 @@ void UI_DisplayMenu(void)
 		}
 
 		case MENU_TXP:
-			strcpy(String, gSubMenu_TXP[gSubMenuSelection]);
+			strcpy(String, gSubMenu_TXP[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_R_DCS:
@@ -655,7 +655,7 @@ void UI_DisplayMenu(void)
 		}
 
 		case MENU_SFT_D:
-			strcpy(String, gSubMenu_SFT_D[gSubMenuSelection]);
+			strcpy(String, gSubMenu_SFT_D[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_OFFSET:

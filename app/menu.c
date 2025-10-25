@@ -152,12 +152,12 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_TXP:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_TXP) - 1;
+			*pMax =  TXP_COUNT - 1;
 			break;
 
 		case MENU_SFT_D:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_SFT_D) - 1;
+			*pMax = SFT_D_COUNT - 1;
 			break;
 
 		case MENU_TDR:

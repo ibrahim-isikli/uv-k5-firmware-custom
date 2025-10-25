@@ -126,14 +126,14 @@ enum
 	MENU_MLONG,
 	MENU_BATTYP
 };
-
+enum { TXP_COUNT = 3, SFT_D_COUNT = 3 };
+enum { LANG_EN = 0, LANG_TR = 1, LANG_COUNT = 2 };
 extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
 extern const t_menu_item MenuList[];
 extern const t_menu_item MenuList_TR[];
 extern const t_menu_item *ActiveMenuList;
-
-extern const char        gSubMenu_TXP[3][5];
-extern const char        gSubMenu_SFT_D[3][4];
+extern const char        gSubMenu_TXP[LANG_COUNT][TXP_COUNT][7];
+extern const char        gSubMenu_SFT_D[LANG_COUNT][SFT_D_COUNT][5];
 extern const char        gSubMenu_W_N[2][7];
 extern const char        gSubMenu_OFF_ON[2][4];
 extern const char        gSubMenu_SAVE[5][4];
