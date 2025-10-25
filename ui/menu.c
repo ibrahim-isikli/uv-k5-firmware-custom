@@ -35,6 +35,7 @@
 #include "inputbox.h"
 #include "menu.h"
 #include "ui.h"
+#include "ui/language.h"
 
 
 const t_menu_item MenuList[] =
