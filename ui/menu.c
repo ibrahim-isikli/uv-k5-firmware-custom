@@ -267,40 +267,28 @@ const char gSubMenu_SFT_D[LANG_COUNT][SFT_D_COUNT][5] =
 	{"KAPA","+","-"}
 };
 
-const char gSubMenu_W_N[][7] =
+const char gSubMenu_W_N[LANG_COUNT][W_N_COUNT][7] =
 {
-	"WIDE",
-	"NARROW"
+	{"WIDE","NARROW"},
+	{"GENIS","DAR"}
 };
 
-const char gSubMenu_OFF_ON[][4] =
+const char gSubMenu_OFF_ON[LANG_COUNT][OFF_ON_COUNT][5] =
 {
-	"OFF",
-	"ON"
+	{"OFF","ON"},
+	{"KAPA","AC"},
 };
 
-const char gSubMenu_SAVE[][4] =
+const char gSubMenu_SAVE[LANG_COUNT][SAVE_COUNT][4] =
 {
-	"OFF",
-	"1:1",
-	"1:2",
-	"1:3",
-	"1:4"
+	{"OFF","1:1","1:2","1:3","1:4"},
+	{"KAPA","1:1","1:2","1:3","1:4"}
 };
 
-const char gSubMenu_TOT[][7] =
+const char gSubMenu_TOT[LANG_COUNT][TOT_COUNT][7] =
 {
-	"30 sec",
-	"1 min",
-	"2 min",
-	"3 min",
-	"4 min",
-	"5 min",
-	"6 min",
-	"7 min",
-	"8 min",
-	"9 min",
-	"15 min"
+	{"30 sec","1 min","2 min","3 min","4 min","5 min","6 min","7 min","8 min","9 min","15 min"},
+	{"30 s","1 dk","2 dk","3 dk","4 dk","5 dk","6 dk","7 dk","8 dk","9 dk","15 dk"}
 };
 
 const char* const gSubMenu_RXMode[] =
@@ -620,7 +608,7 @@ void UI_DisplayMenu(void)
 
 		#ifdef ENABLE_AUDIO_BAR
 			case MENU_MIC_BAR:
-				strcpy(String, gSubMenu_OFF_ON[gSubMenuSelection]);
+				strcpy(String, gSubMenu_OFF_ON[gSetting_language][gSubMenuSelection]);
 				break;
 		#endif
 
@@ -677,7 +665,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_W_N:
-			strcpy(String, gSubMenu_W_N[gSubMenuSelection]);
+			strcpy(String, gSubMenu_W_N[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_SCR:
@@ -748,7 +736,7 @@ void UI_DisplayMenu(void)
 		case MENU_500TX:
 		case MENU_350EN:
 		case MENU_SCREN:
-			strcpy(String, gSubMenu_OFF_ON[gSubMenuSelection]);
+			strcpy(String, gSubMenu_OFF_ON[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_MEM_CH:
@@ -809,7 +797,7 @@ void UI_DisplayMenu(void)
 		}
 
 		case MENU_SAVE:
-			strcpy(String, gSubMenu_SAVE[gSubMenuSelection]);
+			strcpy(String, gSubMenu_SAVE[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_TDR:
@@ -817,7 +805,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_TOT:
-			strcpy(String, gSubMenu_TOT[gSubMenuSelection]);
+			strcpy(String, gSubMenu_TOT[gSetting_language][gSubMenuSelection]);
 			break;
 
 		#ifdef ENABLE_VOICE

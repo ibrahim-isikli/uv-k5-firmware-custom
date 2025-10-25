@@ -207,7 +207,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_W_N:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_W_N) - 1;
+			*pMax = W_N_COUNT - 1;
 			break;
 
 		#ifdef ENABLE_ALARM
@@ -254,7 +254,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 		case MENU_350EN:
 		case MENU_SCREN:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_OFF_ON) - 1;
+			*pMax = OFF_ON_COUNT - 1;
 			break;
 
 		case MENU_AM:
@@ -269,7 +269,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_TOT:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_TOT) - 1;
+			*pMax = TOT_COUNT - 1;
 			break;
 
 		#ifdef ENABLE_VOX
@@ -296,7 +296,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_SAVE:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_SAVE) - 1;
+			*pMax = SAVE_COUNT - 1;
 			break;
 
 		case MENU_MIC:
