@@ -308,10 +308,10 @@ const char* const gSubMenu_RXMode[] =
 	};
 #endif
 
-const char gSubMenu_LANG[2][8] =
+const char gSubMenu_LANG[LANG_COUNT][LANG_COUNT][8] =
 {
-	"ENGLISH",
-	"TURKISH"
+	{"ENGLISH","TURKISH"},
+	{"INGLZCE","TURKCE"}
 };
 
 const char gSubMenu_SC_REV[][8] =
@@ -815,7 +815,7 @@ void UI_DisplayMenu(void)
 		#endif
 		
 		case MENU_LANG:
-			strcpy(String, gSubMenu_LANG[gSubMenuSelection]);
+			strcpy(String, gSubMenu_LANG[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_SC_REV:
