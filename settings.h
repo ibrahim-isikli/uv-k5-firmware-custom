@@ -154,6 +154,7 @@ typedef struct {
 #endif
 
 	uint8_t               SQUELCH_LEVEL;
+	uint8_t               LANG_LEVEL;
 	uint8_t               TX_TIMEOUT_TIMER;
 	bool                  KEY_LOCK;
 	bool                  VOX_SWITCH;

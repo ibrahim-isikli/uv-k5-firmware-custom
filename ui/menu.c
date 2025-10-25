@@ -38,12 +38,13 @@
 #include "ui/language.h"
 
 
-const t_menu_item MenuList[] =
+ t_menu_item MenuList[] =
 {
 //   text,     voice ID,                               menu ID
 	{"Step",   VOICE_ID_FREQUENCY_STEP,                MENU_STEP          },
 	{"TxPwr",  VOICE_ID_POWER,                         MENU_TXP           }, // was "TXP"
 	{"RxDCS",  VOICE_ID_DCS,                           MENU_R_DCS         }, // was "R_DCS"
+	{"Lang",   VOICE_ID_FREQUENCY_STEP,                MENU_LANG          },
 	{"RxCTCS", VOICE_ID_CTCSS,                         MENU_R_CTCS        }, // was "R_CTCS"
 	{"TxDCS",  VOICE_ID_DCS,                           MENU_T_DCS         }, // was "T_DCS"
 	{"TxCTCS", VOICE_ID_CTCSS,                         MENU_T_CTCS        }, // was "T_CTCS"
@@ -144,6 +145,7 @@ const t_menu_item MenuList[] =
 };
 
 const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
+const char * const gSubMenu_LANG[] = { "ENGLISH", "TURKCE" };
 
 const char gSubMenu_TXP[][5] =
 {
@@ -495,6 +497,10 @@ void UI_DisplayMenu(void)
 	{
 		case MENU_SQL:
 			sprintf(String, "%d", gSubMenuSelection);
+			break;
+
+		case MENU_LANG:
+			strcpy(String, gSubMenu_LANG[gSubMenuSelection]);
 			break;
 
 		case MENU_MIC:
@@ -969,4 +975,13 @@ void UI_DisplayMenu(void)
 	}
 
 	ST7565_BlitFullScreen();
+}
+
+void UI_UpdateMenuText(void)
+{
+ 	MenuList[0].name = ActiveLang->step;
+	MenuList[1].name = ActiveLang->txpwr;
+	MenuList[2].name = ActiveLang->rxmode;
+	MenuList[3].name = ActiveLang->language;
+
 }

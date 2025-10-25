@@ -24,7 +24,7 @@
 #include "settings.h"
 
 typedef struct {
-	const char  name[7];    // menu display area only has room for 6 characters
+	const char  *name;    // menu display area only has room for 6 characters
 	VOICE_ID_t  voice_id;
 	uint8_t     menu_id;
 } t_menu_item;
@@ -35,6 +35,7 @@ enum
 	MENU_STEP,
 	MENU_TXP,
 	MENU_R_DCS,
+	MENU_LANG,
 	MENU_R_CTCS,
 	MENU_T_DCS,
 	MENU_T_CTCS,
@@ -127,7 +128,7 @@ enum
 };
 
 extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
-extern const t_menu_item MenuList[];
+extern t_menu_item MenuList[];
 
 extern const char        gSubMenu_TXP[3][5];
 extern const char        gSubMenu_SFT_D[3][4];
@@ -176,5 +177,5 @@ extern int               edit_index;
 void UI_DisplayMenu(void);
 int UI_MENU_GetCurrentMenuId();
 uint8_t UI_MENU_GetMenuIdx(uint8_t id);
-
+void UI_UpdateMenuText(void);
 #endif

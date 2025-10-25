@@ -6,9 +6,9 @@
 typedef struct 
 {
     const char *step;
+    const char *language;
     const char *txpwr;
     const char *rxmode;
-    const char *language;
 } LanguagePack_t;
 
 extern const LanguagePack_t LANG_EN;

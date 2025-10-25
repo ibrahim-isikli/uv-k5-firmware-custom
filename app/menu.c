@@ -41,10 +41,12 @@
 #include "ui/inputbox.h"
 #include "ui/menu.h"
 #include "ui/ui.h"
+#include "ui/language.h"
 
 #ifndef ARRAY_SIZE
 	#define ARRAY_SIZE(x) (sizeof(x) / sizeof(x[0]))
 #endif
+extern void UI_SetLanguage(uint8_t lang);
 
 uint8_t gUnlockAllTxConfCnt;
 
@@ -118,6 +120,11 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 		case MENU_SQL:
 			*pMin = 0;
 			*pMax = 9;
+			break;
+
+		case MENU_LANG:
+			*pMin = 0;
+			*pMax = 2;
 			break;
 
 		case MENU_STEP:
@@ -391,6 +398,12 @@ void MENU_AcceptSetting(void)
 		case MENU_SQL:
 			gEeprom.SQUELCH_LEVEL = gSubMenuSelection;
 			gVfoConfigureMode     = VFO_CONFIGURE;
+			break;
+		
+		case MENU_LANG:
+			gEeprom.LANG_LEVEL = gSubMenuSelection;
+			  UI_SetLanguage(gSubMenuSelection);
+			  UI_UpdateMenuText();
 			break;
 
 		case MENU_STEP:
@@ -823,6 +836,10 @@ void MENU_ShowCurrentSetting(void)
 	{
 		case MENU_SQL:
 			gSubMenuSelection = gEeprom.SQUELCH_LEVEL;
+			break;
+
+		case MENU_LANG:
+			gSubMenuSelection = gEeprom.LANG_LEVEL;
 			break;
 
 		case MENU_STEP:

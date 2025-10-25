@@ -162,6 +162,7 @@ ifeq ($(ENABLE_PWRON_PASSWORD),1)
 endif
 OBJS += ui/main.o
 OBJS += ui/menu.o
+OBJS += ui/language.o
 OBJS += ui/scanner.o
 OBJS += ui/status.o
 OBJS += ui/ui.o
