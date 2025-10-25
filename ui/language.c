@@ -2,18 +2,18 @@
 
 const LanguagePack_t LANG_EN = 
 {
-    .step     = "Step",
-    .language = "Lang",
-    .txpwr    = "TxPwr",
-    .rxmode   = "RxDCS",
+    .step       = "Step",
+    .txp        = "TxPwr",
+    .r_dcs      = "RxDCS",
+    .lang       = "Lang",
 };
 
 const LanguagePack_t LANG_TR = 
 {
-    .step     = "Adim",
-    .language = "Dil",
-    .txpwr    = "Guc",
-    .rxmode   = "Alici",
+    .step       = "Adim",
+    .txp        = "Guc",
+    .r_dcs      = "Alici",
+    .lang       = "Dil",
 };
 
 const LanguagePack_t *ActiveLang = &LANG_EN;

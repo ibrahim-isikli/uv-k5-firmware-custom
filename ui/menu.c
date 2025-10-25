@@ -980,8 +980,8 @@ void UI_DisplayMenu(void)
 void UI_UpdateMenuText(void)
 {
  	MenuList[0].name = ActiveLang->step;
-	MenuList[1].name = ActiveLang->txpwr;
-	MenuList[2].name = ActiveLang->rxmode;
-	MenuList[3].name = ActiveLang->language;
+	MenuList[1].name = ActiveLang->txp;
+	MenuList[2].name = ActiveLang->r_dcs;
+	MenuList[3].name = ActiveLang->lang;
 
 }
