@@ -126,25 +126,25 @@ enum
 	MENU_MLONG,
 	MENU_BATTYP
 };
-enum { TXP_COUNT = 3, SFT_D_COUNT = 3, W_N_COUNT=2,OFF_ON_COUNT=2,SAVE_COUNT=5,TOT_COUNT=11, };
+enum { TXP_COUNT = 3, SFT_D_COUNT = 3, W_N_COUNT=2,OFF_ON_COUNT=2,SAVE_COUNT=5,TOT_COUNT=11,SC_REV_COUNT=3 };
 enum { LANG_EN = 0, LANG_TR = 1, LANG_COUNT = 2 };
 extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
 extern const t_menu_item MenuList[];
-extern const t_menu_item MenuList_TR[];
-extern const t_menu_item *ActiveMenuList;
-extern const char        gSubMenu_TXP[LANG_COUNT][TXP_COUNT][7];
-extern const char        gSubMenu_SFT_D[LANG_COUNT][SFT_D_COUNT][5];
-extern const char        gSubMenu_W_N[LANG_COUNT][W_N_COUNT][7];
-extern const char        gSubMenu_OFF_ON[LANG_COUNT][OFF_ON_COUNT][5];
-extern const char        gSubMenu_SAVE[LANG_COUNT][SAVE_COUNT][4];
-extern const char        gSubMenu_TOT[LANG_COUNT][TOT_COUNT][7];
+//extern static const t_menu_item MenuList_TR[];
+//extern const t_menu_item *ActiveMenuList;
+//extern const char        gSubMenu_TXP[LANG_COUNT][TXP_COUNT][7];
+//extern const char        gSubMenu_SFT_D[LANG_COUNT][SFT_D_COUNT][5];
+//extern const char        gSubMenu_W_N[LANG_COUNT][W_N_COUNT][7];
+//extern const char        gSubMenu_OFF_ON[LANG_COUNT][OFF_ON_COUNT][5];
+//extern const char        gSubMenu_SAVE[LANG_COUNT][SAVE_COUNT][4];
+//extern const char        gSubMenu_TOT[LANG_COUNT][TOT_COUNT][7];
 extern const char* const gSubMenu_RXMode[4];
 
 #ifdef ENABLE_VOICE
 	extern const char    gSubMenu_VOICE[3][4];
 #endif
-extern const char 		 gSubMenu_LANG[LANG_COUNT][LANG_COUNT][8];
-extern const char        gSubMenu_SC_REV[3][8];
+//extern const char 		 gSubMenu_LANG[LANG_COUNT][LANG_COUNT][8];
+//extern const char        gSubMenu_SC_REV[3][8];
 extern const char* const gSubMenu_MDF[4];
 #ifdef ENABLE_ALARM
 	extern const char    gSubMenu_AL_MOD[2][5];

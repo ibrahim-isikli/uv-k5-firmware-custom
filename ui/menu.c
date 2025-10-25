@@ -143,7 +143,7 @@ const t_menu_item MenuList[] =
 	{"",       VOICE_ID_INVALID,                       0xff               }  // end of list - DO NOT delete or move this this
 };
 
-const t_menu_item MenuList_TR[] =
+static const t_menu_item MenuList_TR[] =
 {
 //   text,     voice ID,                               menu ID
 	{"Adim",   VOICE_ID_FREQUENCY_STEP,                MENU_STEP          },
@@ -250,42 +250,42 @@ const t_menu_item MenuList_TR[] =
 };
 
 uint8_t gLanguage = 0; // 0 = EN, 1 = TR
-const t_menu_item *ActiveMenuList = MenuList;
+static const t_menu_item *ActiveMenuList = MenuList;
 const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
 
 
 
-const char gSubMenu_TXP[LANG_COUNT][TXP_COUNT][7] =
+static const char gSubMenu_TXP[LANG_COUNT][TXP_COUNT][7] =
 {
 	{"LOW","MID","HIGH"},
 	{"DUSUK","ORTA","YUKSEK"}
 };
 
-const char gSubMenu_SFT_D[LANG_COUNT][SFT_D_COUNT][5] =
+static const char gSubMenu_SFT_D[LANG_COUNT][SFT_D_COUNT][5] =
 {
 	{"OFF","+","-"},
 	{"KAPA","+","-"}
 };
 
-const char gSubMenu_W_N[LANG_COUNT][W_N_COUNT][7] =
+static const char gSubMenu_W_N[LANG_COUNT][W_N_COUNT][7] =
 {
 	{"WIDE","NARROW"},
 	{"GENIS","DAR"}
 };
 
-const char gSubMenu_OFF_ON[LANG_COUNT][OFF_ON_COUNT][5] =
+static const char gSubMenu_OFF_ON[LANG_COUNT][OFF_ON_COUNT][5] =
 {
 	{"OFF","ON"},
 	{"KAPA","AC"},
 };
 
-const char gSubMenu_SAVE[LANG_COUNT][SAVE_COUNT][4] =
+static const char gSubMenu_SAVE[LANG_COUNT][SAVE_COUNT][4] =
 {
 	{"OFF","1:1","1:2","1:3","1:4"},
 	{"KAPA","1:1","1:2","1:3","1:4"}
 };
 
-const char gSubMenu_TOT[LANG_COUNT][TOT_COUNT][7] =
+static const char gSubMenu_TOT[LANG_COUNT][TOT_COUNT][7] =
 {
 	{"30 sec","1 min","2 min","3 min","4 min","5 min","6 min","7 min","8 min","9 min","15 min"},
 	{"30 s","1 dk","2 dk","3 dk","4 dk","5 dk","6 dk","7 dk","8 dk","9 dk","15 dk"}
@@ -308,17 +308,16 @@ const char* const gSubMenu_RXMode[] =
 	};
 #endif
 
-const char gSubMenu_LANG[LANG_COUNT][LANG_COUNT][8] =
+static const char gSubMenu_LANG[LANG_COUNT][LANG_COUNT][4] =
 {
-	{"ENGLISH","TURKISH"},
-	{"INGLZCE","TURKCE"}
+	{"ENG","TR"},
+	{"ING","TR"}
 };
 
-const char gSubMenu_SC_REV[][8] =
+static const char gSubMenu_SC_REV[LANG_COUNT][SC_REV_COUNT][8] =
 {
-	"TIMEOUT",
-	"CARRIER",
-	"STOP"
+	{"TIMEOUT","CARRIER","STOP"},
+	{"ZMN ASM","TASIYIC","DUR"},
 };
 
 const char* const gSubMenu_MDF[] =
@@ -819,7 +818,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_SC_REV:
-			strcpy(String, gSubMenu_SC_REV[gSubMenuSelection]);
+			strcpy(String, gSubMenu_SC_REV[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_MDF:
