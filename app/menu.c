@@ -163,7 +163,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_TDR:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_RXMode) - 1;
+			*pMax = RXMode_COUNT - 1;
 			break;
 
 		#ifdef ENABLE_VOICE

@@ -292,12 +292,17 @@ static const char gSubMenu_TOT[LANG_COUNT][TOT_COUNT][7] =
 	{"30 s","1 dk","2 dk","3 dk","4 dk","5 dk","6 dk","7 dk","8 dk","9 dk","15 dk"}
 };
 
-const char* const gSubMenu_RXMode[] =
+ static char const gSubMenu_RXMode[LANG_COUNT][RXMode_COUNT][25] =
 {
-	"MAIN\nONLY", 		// TX and RX on main only
+	{"MAIN\nONLY", 		// TX and RX on main only
 	"DUAL RX\nRESPOND", // Watch both and respond
 	"CROSS\nBAND", 		// TX on main, RX on secondary
-	"MAIN TX\nDUAL RX" 	// always TX on main, but RX on both
+	"MAIN TX\nDUAL RX"}, 	// always TX on main, but RX on both
+	
+	{"YALNIZ\nANA", 		// TX and RX on main only
+	"CIFT RX\nYANIT", // Watch both and respond
+	"CAPRAZ\nBANT", 		// TX on main, RX on secondary
+	"ANA TX\nCIFT RX"},
 };
 
 #ifdef ENABLE_VOICE
@@ -917,7 +922,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_TDR:
-			strcpy(String, gSubMenu_RXMode[gSubMenuSelection]);
+			strcpy(String, gSubMenu_RXMode[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_TOT:
