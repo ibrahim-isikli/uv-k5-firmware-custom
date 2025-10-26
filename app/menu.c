@@ -127,7 +127,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_ABR:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_BACKLIGHT) - 1;
+			*pMax = BACKLIGHT_COUNT - 1;
 			break;
 
 		case MENU_ABR_MIN:
@@ -142,7 +142,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_F_LOCK:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_F_LOCK) - 1;
+			*pMax = F_LOCK_COUNT - 1;
 			break;
 
 		case MENU_MDF:
@@ -225,7 +225,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 		case MENU_COMPAND:
 		case MENU_ABR_ON_TX_RX:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_RX_TX) - 1;
+			*pMax = RX_TX_COUNT - 1;
 			break;
 
 		#ifdef ENABLE_AM_FIX
@@ -264,7 +264,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_SCR:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_SCRAMBLER) - 1;
+			*pMax = SCRAMBLER_COUNT - 1;
 			break;
 
 		case MENU_TOT:
@@ -322,7 +322,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_BAT_TXT:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_BAT_TXT) - 1;
+			*pMax = BAT_TX_COUNT - 1;
 			break;
 
 #ifdef ENABLE_DTMF_CALLING

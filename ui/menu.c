@@ -398,43 +398,68 @@ static const char gSubMenu_RESET[LANG_COUNT][RESET_COUNT][4] =
 	{"VFO","TUMU"}
 };
 
-const char * const gSubMenu_F_LOCK[] =
+static char const gSubMenu_F_LOCK[LANG_COUNT][F_LOCK_COUNT][30] =
 {
-	"DEFAULT+\n137-174\n400-470",
+	{"DEFAULT+\n137-174\n400-470",
 	"FCC HAM\n144-148\n420-450",
 	"CE HAM\n144-146\n430-440",
 	"GB HAM\n144-148\n430-440",
 	"137-174\n400-430",
 	"137-174\n400-438",
 	"DISABLE\nALL",
-	"UNLOCK\nALL",
+	"UNLOCK\nALL",},
+
+	{"STNDRT+\n137-174\n400-470",
+	"FCC HAM\n144-148\n420-450",
+	"CE HAM\n144-146\n430-440",
+	"GB HAM\n144-148\n430-440",
+	"137-174\n400-430",
+	"137-174\n400-438",
+	"KAPAT\nTUMU",
+	"KITLE\nTUMU",}
+
 };
 
-const char gSubMenu_BACKLIGHT[][7] =
+  char gSubMenu_BACKLIGHT[LANG_COUNT][BACKLIGHT_COUNT][7] =
 {
-	"OFF",
+	{"OFF",
 	"5 sec",
 	"10 sec",
 	"20 sec",
 	"1 min",
 	"2 min",
 	"4 min",
-	"ON"
+	"ON"},
+	{"KAPA",
+	"5 s",
+	"10 s",
+	"20 s",
+	"1 dk",
+	"2 dk",
+	"4 dk",
+	"AC"}
 };
 
-const char gSubMenu_RX_TX[][6] =
+static const char gSubMenu_RX_TX[LANG_COUNT][RX_TX_COUNT][6] =
 {
-	"OFF",
+	{"OFF",
 	"TX",
 	"RX",
-	"TX/RX"
+	"TX/RX"},
+	{"KAPA",
+	"TX",
+	"RX",
+	"TX/RX"}
 };
 
-const char gSubMenu_BAT_TXT[][8] =
+static const char gSubMenu_BAT_TXT[LANG_COUNT][BAT_TX_COUNT][9] =
 {
-	"NONE",
+	{"NONE",
 	"VOLTAGE",
-	"PERCENT"
+	"PERCENT"},
+	{"YOK",
+	"VOLTAJ",
+	"YUZDELIK"}
 };
 
 const char gSubMenu_BATTYP[][9] =
@@ -443,9 +468,9 @@ const char gSubMenu_BATTYP[][9] =
 	"2200mAh"
 };
 
-const char gSubMenu_SCRAMBLER[][7] =
+static const char gSubMenu_SCRAMBLER[LANG_COUNT][SCRAMBLER_COUNT][7] =
 {
-	"OFF",
+	{"OFF",
 	"2600Hz",
 	"2700Hz",
 	"2800Hz",
@@ -455,7 +480,18 @@ const char gSubMenu_SCRAMBLER[][7] =
 	"3200Hz",
 	"3300Hz",
 	"3400Hz",
-	"3500Hz"
+	"3500Hz"},
+	{"KAPA",
+	"2600Hz",
+	"2700Hz",
+	"2800Hz",
+	"2900Hz",
+	"3000Hz",
+	"3100Hz",
+	"3200Hz",
+	"3300Hz",
+	"3400Hz",
+	"3500Hz"}
 };
 
 const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
@@ -690,7 +726,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_SCR:
-			strcpy(String, gSubMenu_SCRAMBLER[gSubMenuSelection]);
+			strcpy(String, gSubMenu_SCRAMBLER[gSetting_language][gSubMenuSelection]);
 			#if 1
 				if (gSubMenuSelection > 0 && gSetting_ScrambleEnable)
 					BK4819_EnableScramble(gSubMenuSelection - 1);
@@ -709,7 +745,7 @@ void UI_DisplayMenu(void)
 		#endif
 
 		case MENU_ABR:
-			strcpy(String, gSubMenu_BACKLIGHT[gSubMenuSelection]);
+			strcpy(String, gSubMenu_BACKLIGHT[gSetting_language][gSubMenuSelection]);
 			if(BACKLIGHT_GetBrightness() < 4)
 				BACKLIGHT_SetBrightness(4);
 			break;
@@ -733,7 +769,7 @@ void UI_DisplayMenu(void)
 
 		case MENU_COMPAND:
 		case MENU_ABR_ON_TX_RX:
-			strcpy(String, gSubMenu_RX_TX[gSubMenuSelection]);
+			strcpy(String, gSubMenu_RX_TX[gSetting_language][gSubMenuSelection]);
 			break;
 
 		#ifdef ENABLE_AM_FIX
@@ -898,7 +934,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_BAT_TXT:
-			strcpy(String, gSubMenu_BAT_TXT[gSubMenuSelection]);
+			strcpy(String, gSubMenu_BAT_TXT[gSetting_language][gSubMenuSelection]);
 			break;
 
 #ifdef ENABLE_DTMF_CALLING
@@ -933,7 +969,7 @@ void UI_DisplayMenu(void)
 			if(!gIsInSubMenu && gUnlockAllTxConfCnt>0 && gUnlockAllTxConfCnt<10)
 				strcpy(String, "READ\nMANUAL");
 			else
-				strcpy(String, gSubMenu_F_LOCK[gSubMenuSelection]);
+				strcpy(String, gSubMenu_F_LOCK[gSetting_language][gSubMenuSelection]);
 			break;
 
 		#ifdef ENABLE_F_CAL_MENU

@@ -232,7 +232,7 @@ void RADIO_ConfigureChannel(const unsigned int VFO, const unsigned int configure
 		pVfo->StepFrequency = gStepFrequencyTable[tmp];
 
 		tmp = data[7];
-		if (tmp > (ARRAY_SIZE(gSubMenu_SCRAMBLER) - 1))
+		if (tmp > (SCRAMBLER_COUNT - 1))
 			tmp = 0;
 		pVfo->SCRAMBLING_TYPE = tmp;
 

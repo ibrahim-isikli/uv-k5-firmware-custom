@@ -126,7 +126,7 @@ enum
 	MENU_MLONG,
 	MENU_BATTYP
 };
-enum { TXP_COUNT = 3, SFT_D_COUNT = 3, W_N_COUNT=2,OFF_ON_COUNT=2,SAVE_COUNT=5,TOT_COUNT=11,SC_REV_COUNT=3,MDF_COUNT=4,PONMSG_COUNT = 4,AL_MOD_COUNT=2,D_RSP_COUNT=4,PTT_ID_COUNT=5,ROGER_COUNT=3,RESET_COUNT=2 };
+enum { TXP_COUNT = 3, SFT_D_COUNT = 3, W_N_COUNT=2,OFF_ON_COUNT=2,SAVE_COUNT=5,TOT_COUNT=11,SC_REV_COUNT=3,MDF_COUNT=4,PONMSG_COUNT = 4,AL_MOD_COUNT=2,D_RSP_COUNT=4,PTT_ID_COUNT=5,ROGER_COUNT=3,RESET_COUNT=2,F_LOCK_COUNT=8,BACKLIGHT_COUNT=8,RX_TX_COUNT=4,BAT_TX_COUNT=3,SCRAMBLER_COUNT=11 };
 enum { LANG_EN = 0, LANG_TR = 1, LANG_COUNT = 2 };
 extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
 extern const t_menu_item MenuList[];
@@ -156,12 +156,12 @@ extern const char* const gSubMenu_RXMode[4];
 //extern const char        gSubMenu_PONMSG[4][8];
 //extern const char        gSubMenu_ROGER[3][6];
 //extern const char        gSubMenu_RESET[2][4];
-extern const char* const gSubMenu_F_LOCK[F_LOCK_LEN];
-extern const char        gSubMenu_BACKLIGHT[8][7];
-extern const char        gSubMenu_RX_TX[4][6];
-extern const char        gSubMenu_BAT_TXT[3][8];
-extern const char 		 gSubMenu_BATTYP[2][9];
-extern const char        gSubMenu_SCRAMBLER[11][7];
+//extern const char* const gSubMenu_F_LOCK[F_LOCK_LEN];
+extern  char        gSubMenu_BACKLIGHT[LANG_COUNT][BACKLIGHT_COUNT][7];
+//extern const char        gSubMenu_RX_TX[4][6];
+//extern const char        gSubMenu_BAT_TXT[3][8];
+//extern const char 		 gSubMenu_BATTYP[2][9];
+//extern const char        gSubMenu_SCRAMBLER[11][7];
 
 typedef struct {char* name; uint8_t id;} t_sidefunction;
 extern const uint8_t 		 gSubMenu_SIDEFUNCTIONS_size;

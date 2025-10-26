@@ -1324,7 +1324,7 @@ void APP_TimeSlice500ms(void)
 		// don't turn off backlight if user is in backlight menu option
 		&& !(gScreenToDisplay == DISPLAY_MENU && (UI_MENU_GetCurrentMenuId() == MENU_ABR || UI_MENU_GetCurrentMenuId() == MENU_ABR_MAX))
 		&& --gBacklightCountdown_500ms == 0
-		&& gEeprom.BACKLIGHT_TIME < (ARRAY_SIZE(gSubMenu_BACKLIGHT) - 1)
+		&& gEeprom.BACKLIGHT_TIME < (BACKLIGHT_COUNT - 1)
 	) {
 		BACKLIGHT_TurnOff();
 	}
