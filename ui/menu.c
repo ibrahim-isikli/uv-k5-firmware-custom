@@ -718,7 +718,12 @@ void UI_DisplayMenu(void)
 		case MENU_R_DCS:
 		case MENU_T_DCS:
 			if (gSubMenuSelection == 0)
-				strcpy(String, "OFF");
+			{
+				if(gSetting_language)
+					strcpy(String, "KAPA");
+				else
+					strcpy(String, "OFF");
+			}
 			else if (gSubMenuSelection < 105)
 				sprintf(String, "D%03oN", DCS_Options[gSubMenuSelection -   1]);
 			else
@@ -729,7 +734,13 @@ void UI_DisplayMenu(void)
 		case MENU_T_CTCS:
 		{
 			if (gSubMenuSelection == 0)
-				strcpy(String, "OFF");
+			{
+				if(gSetting_language)
+					strcpy(String, "KAPA");
+				else
+					strcpy(String, "OFF");
+			}
+				
 			else
 				sprintf(String, "%u.%uHz", CTCSS_Options[gSubMenuSelection - 1] / 10, CTCSS_Options[gSubMenuSelection - 1] % 10);
 			break;
@@ -774,7 +785,12 @@ void UI_DisplayMenu(void)
 		#ifdef ENABLE_VOX
 			case MENU_VOX:
 				if (gSubMenuSelection == 0)
-					strcpy(String, "OFF");
+				{
+					if(gSetting_language)
+						strcpy(String, "KAPA");
+					else
+						strcpy(String, "OFF");
+				}
 				else
 					sprintf(String, "%d", gSubMenuSelection);
 				break;
@@ -800,7 +816,14 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_AUTOLK:
-			strcpy(String, (gSubMenuSelection == 0) ? "OFF" : "AUTO");
+				if(gSubMenuSelection == 0)
+				{
+					strcpy(String, (gSetting_language == 1) ? "KAPA" : "OFF");
+				}
+				else
+				{
+					strcpy(String, (gSetting_language == 1) ? "OTO" : "AUTO");
+				}
 			break;
 
 		case MENU_COMPAND:
@@ -921,7 +944,9 @@ void UI_DisplayMenu(void)
 
 		case MENU_RP_STE:
 			if (gSubMenuSelection == 0)
-				strcpy(String, "OFF");
+			{
+				strcpy(String, (gSetting_language == 1) ? "KAPA" : "OFF");
+			}
 			else
 				sprintf(String, "%d*100ms", gSubMenuSelection);
 			break;
@@ -977,7 +1002,7 @@ void UI_DisplayMenu(void)
 		case MENU_D_LIST:
 			gIsDtmfContactValid = DTMF_GetContact((int)gSubMenuSelection - 1, Contact);
 			if (!gIsDtmfContactValid)
-				strcpy(String, "NULL");
+				strcpy(String, (gSetting_language == 1) ? "BOS" : "NULL");
 			else
 				memcpy(String, Contact, 8);
 			break;
@@ -1003,7 +1028,7 @@ void UI_DisplayMenu(void)
 
 		case MENU_F_LOCK:
 			if(!gIsInSubMenu && gUnlockAllTxConfCnt>0 && gUnlockAllTxConfCnt<10)
-				strcpy(String, "READ\nMANUAL");
+				strcpy(String, (gSetting_language == 1) ? "OTO\nOKU" : "READ\nMANUAL");
 			else
 				strcpy(String, gSubMenu_F_LOCK[gSetting_language][gSubMenuSelection]);
 			break;
@@ -1104,7 +1129,8 @@ void UI_DisplayMenu(void)
 		char *pPrintStr = String;
 
 		if (gSubMenuSelection < 0) {
-			pPrintStr = "NULL";
+			
+			pPrintStr = (gSetting_language)?"BOS":"NULL";
 		} else {
 			UI_GenerateChannelStringEx(String, true, gSubMenuSelection);
 			pPrintStr = String;
@@ -1135,7 +1161,7 @@ void UI_DisplayMenu(void)
 	}
 
 	if ((UI_MENU_GetCurrentMenuId() == MENU_R_CTCS || UI_MENU_GetCurrentMenuId() == MENU_R_DCS) && gCssBackgroundScan)
-		UI_PrintString("SCAN", menu_item_x1, menu_item_x2, 4, 8);
+		UI_PrintString((gSetting_language==1)?"TARA":"SCAN", menu_item_x1, menu_item_x2, 4, 8);
 
 #ifdef ENABLE_DTMF_CALLING
 	if (UI_MENU_GetCurrentMenuId() == MENU_D_LIST && gIsDtmfContactValid) {
@@ -1163,7 +1189,16 @@ void UI_DisplayMenu(void)
 	     UI_MENU_GetCurrentMenuId() == MENU_MEM_NAME ||
 	     UI_MENU_GetCurrentMenuId() == MENU_DEL_CH) && gAskForConfirmation)
 	{	// display confirmation
-		char *pPrintStr = (gAskForConfirmation == 1) ? "SURE?" : "WAIT!";
+		char *pPrintStr;
+		if(gAskForConfirmation == 1)
+		{
+			pPrintStr = (gSetting_language == 1) ? "TMM?":"SURE?";
+		}
+		else
+		{
+			pPrintStr = (gSetting_language == 1) ? "BEKLE!":"WAIT!";
+		}
+	
 		UI_PrintString(pPrintStr, menu_item_x1, menu_item_x2, 5, 8);
 	}
 
