@@ -251,6 +251,7 @@ static const t_menu_item MenuList_TR[] =
 
 uint8_t gLanguage = 0; // 0 = EN, 1 = TR
 static const t_menu_item *ActiveMenuList = MenuList;
+const t_sidefunction *ActiveSideFuncList = gSubMenu_SIDEFUNCTIONS;
 const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
 
 
@@ -526,6 +527,41 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
 	{"SPECTRUM",         ACTION_OPT_SPECTRUM}
 #endif
 };
+
+const t_sidefunction gSubMenu_SIDEFUNCTIONS_TR[] =
+{
+	{"YOK",			ACTION_OPT_NONE},
+#ifdef ENABLE_FLASHLIGHT
+	{"EL\nFENERI",	ACTION_OPT_FLASHLIGHT},
+#endif
+	{"GUC",			ACTION_OPT_POWER},
+	{"MONITOR",			ACTION_OPT_MONITOR},
+	{"TARA",			ACTION_OPT_SCAN},
+#ifdef ENABLE_VOX
+	{"VOX",				ACTION_OPT_VOX},
+#endif
+#ifdef ENABLE_ALARM
+	{"ALARM",			ACTION_OPT_ALARM},
+#endif
+#ifdef ENABLE_FMRADIO
+	{"FM RADIO",		ACTION_OPT_FM},
+#endif
+#ifdef ENABLE_TX1750
+	{"1750HZ",			ACTION_OPT_1750},
+#endif
+	{"TUS\nKILT",	ACTION_OPT_KEYLOCK},
+	{"DEGIS\nVFO",		ACTION_OPT_A_B},
+	{"VFO/MR",			ACTION_OPT_VFO_MR},
+	{"DEGIS\nDEMODUL",	ACTION_OPT_SWITCH_DEMODUL},
+#ifdef ENABLE_BLMIN_TMP_OFF
+	{"BLMIN\nTMP OFF",  ACTION_OPT_BLMIN_TMP_OFF}, 		//BackLight Minimum Temporay OFF
+#endif
+#ifdef ENABLE_SPECTRUM
+	{"SPEKTRUM",         ACTION_OPT_SPECTRUM}
+#endif
+};
+
+
 
 const uint8_t gSubMenu_SIDEFUNCTIONS_size = ARRAY_SIZE(gSubMenu_SIDEFUNCTIONS);
 
@@ -1003,7 +1039,7 @@ void UI_DisplayMenu(void)
 		case MENU_F2SHRT:
 		case MENU_F2LONG:
 		case MENU_MLONG:
-			strcpy(String, gSubMenu_SIDEFUNCTIONS[gSubMenuSelection].name);
+			strcpy(String, ActiveSideFuncList[gSubMenuSelection].name);
 			break;
 
 	}
@@ -1141,10 +1177,12 @@ void UI_SetLanguage(uint8_t lang)
 	{
         BK4819_ToggleGpioOut(BK4819_GPIO5_PIN1_RED, true);
 		ActiveMenuList = MenuList_TR;
+		ActiveSideFuncList = gSubMenu_SIDEFUNCTIONS_TR;
     } 
 	else if (lang == 0)
 	{
         BK4819_ToggleGpioOut(BK4819_GPIO6_PIN2_GREEN, true);
 		ActiveMenuList = MenuList;
+		ActiveSideFuncList = gSubMenu_SIDEFUNCTIONS;
     }
 }

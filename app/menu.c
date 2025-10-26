@@ -48,6 +48,7 @@
 
 uint8_t gUnlockAllTxConfCnt;
 extern uint8_t gLanguage;
+extern const t_sidefunction *ActiveSideFuncList;
 #ifdef ENABLE_F_CAL_MENU
 	void writeXtalFreqCal(const int32_t value, const bool update_eeprom)
 	{
@@ -804,7 +805,7 @@ void MENU_AcceptSetting(void)
 					&gEeprom.KEY_2_SHORT_PRESS_ACTION,
 					&gEeprom.KEY_2_LONG_PRESS_ACTION,
 					&gEeprom.KEY_M_LONG_PRESS_ACTION};
-				*fun[UI_MENU_GetCurrentMenuId()-MENU_F1SHRT] = gSubMenu_SIDEFUNCTIONS[gSubMenuSelection].id;
+				*fun[UI_MENU_GetCurrentMenuId()-MENU_F1SHRT] = ActiveSideFuncList[gSubMenuSelection].id;
 			}
 			break;
 
@@ -1164,7 +1165,7 @@ void MENU_ShowCurrentSetting(void)
 			uint8_t id = *fun[UI_MENU_GetCurrentMenuId()-MENU_F1SHRT];
 
 			for(int i = 0; i < gSubMenu_SIDEFUNCTIONS_size; i++) {
-				if(gSubMenu_SIDEFUNCTIONS[i].id==id) {
+				if(ActiveSideFuncList[i].id==id) {
 					gSubMenuSelection = i;
 					break;
 				}
