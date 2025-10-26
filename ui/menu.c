@@ -1215,13 +1215,13 @@ void UI_SetLanguage(uint8_t lang)
 	// test edildi turkce secince kirmizi isik , ingilizce secince yesil isik yaniyor
 	if (lang == 1) 
 	{
-        BK4819_ToggleGpioOut(BK4819_GPIO5_PIN1_RED, true);
+        //BK4819_ToggleGpioOut(BK4819_GPIO5_PIN1_RED, true);
 		ActiveMenuList = MenuList_TR;
 		ActiveSideFuncList = gSubMenu_SIDEFUNCTIONS_TR;
     } 
 	else if (lang == 0)
 	{
-        BK4819_ToggleGpioOut(BK4819_GPIO6_PIN2_GREEN, true);
+        //BK4819_ToggleGpioOut(BK4819_GPIO6_PIN2_GREEN, true);
 		ActiveMenuList = MenuList;
 		ActiveSideFuncList = gSubMenu_SIDEFUNCTIONS;
     }
