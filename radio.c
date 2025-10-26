@@ -312,7 +312,7 @@ void RADIO_ConfigureChannel(const unsigned int VFO, const unsigned int configure
 			pVfo->DTMF_DECODING_ENABLE = ((data[5] >> 0) & 1u) ? true : false;
 #endif
 			uint8_t pttId = ((data[5] >> 1) & 7u);
-			pVfo->DTMF_PTT_ID_TX_MODE  = pttId < ARRAY_SIZE(gSubMenu_PTT_ID) ? pttId : PTT_ID_OFF;
+			pVfo->DTMF_PTT_ID_TX_MODE  = pttId < (PTT_ID_COUNT) ? pttId : PTT_ID_OFF;
 		}
 
 		// ***************

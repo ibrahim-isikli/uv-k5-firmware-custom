@@ -184,7 +184,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_ROGER:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_ROGER) - 1;
+			*pMax = ROGER_COUNT - 1;
 			break;
 
 		case MENU_PONMSG:
@@ -213,13 +213,13 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 		#ifdef ENABLE_ALARM
 			case MENU_AL_MOD:
 				*pMin = 0;
-				*pMax = ARRAY_SIZE(gSubMenu_AL_MOD) - 1;
+				*pMax = AL_MOD_COUNT - 1;
 				break;
 		#endif
 
 		case MENU_RESET:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_RESET) - 1;
+			*pMax = RESET_COUNT - 1;
 			break;
 
 		case MENU_COMPAND:
@@ -312,12 +312,12 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 #ifdef ENABLE_DTMF_CALLING
 		case MENU_D_RSP:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_D_RSP) - 1;
+			*pMax = D_RSP_COUNT - 1;
 			break;
 #endif
 		case MENU_PTT_ID:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_PTT_ID) - 1;
+			*pMax = PTT_ID_COUNT - 1;
 			break;
 
 		case MENU_BAT_TXT:

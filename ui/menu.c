@@ -320,39 +320,53 @@ static const char gSubMenu_SC_REV[LANG_COUNT][SC_REV_COUNT][8] =
 	{"ZMN ASM","TASIYIC","DUR"},
 };
 
-const char* const gSubMenu_MDF[] =
+static const char gSubMenu_MDF[LANG_COUNT][MDF_COUNT][20] =
 {
-	"FREQ",
+	{"FREQ",
 	"CHANNEL\nNUMBER",
 	"NAME",
-	"NAME\n+\nFREQ"
+	"NAME\n+\nFREQ"},
+
+	{"FREK",
+	"KANAL\nNUMRA",
+	"AD",
+	"AD\n+\nFREK"}
 };
 
 #ifdef ENABLE_ALARM
-	const char gSubMenu_AL_MOD[][5] =
+	static const char gSubMenu_AL_MOD[LANG_COUNT][AL_MOD_COUNT][5] =
 	{
-		"SITE",
-		"TONE"
+		{"SITE","TONE"},
+		{"ALAN","TON"},
 	};
 #endif
 
 #ifdef ENABLE_DTMF_CALLING
-const char gSubMenu_D_RSP[][11] =
+static const char gSubMenu_D_RSP[LANG_COUNT][D_RSP_COUNT][11] =
 {
-	"DO\nNOTHING",
+	{"DO\nNOTHING",
 	"RING",
 	"REPLY",
-	"BOTH"
+	"BOTH"},
+	{"BISI\nYAPMA",
+	"ZIL",
+	"TEKRAR",
+	"CIFTI"}
 };
 #endif
 
-const char* const gSubMenu_PTT_ID[] =
+static char const gSubMenu_PTT_ID[LANG_COUNT][PTT_ID_COUNT][20] =
 {
-	"OFF",
+	{"OFF",
 	"UP CODE",
 	"DOWN CODE",
 	"UP+DOWN\nCODE",
-	"APOLLO\nQUINDAR"
+	"APOLLO\nQUINDAR"},
+	{"KAPA",
+	"UP KOD",
+	"DOWN KOD",
+	"UP+DOWN\nKOD",
+	"APOLLO\nQUINDAR"}
 };
 
 static const char gSubMenu_PONMSG[LANG_COUNT][PONMSG_COUNT][8] =
@@ -368,17 +382,20 @@ static const char gSubMenu_PONMSG[LANG_COUNT][PONMSG_COUNT][8] =
 
 };
 
-const char gSubMenu_ROGER[][6] =
+static const char gSubMenu_ROGER[LANG_COUNT][ROGER_COUNT][6] =
 {
-	"OFF",
+	{"OFF",
 	"ROGER",
-	"MDC"
+	"MDC"},
+	{"KAPA",
+	"ROGER",
+	"MDC"}
 };
 
-const char gSubMenu_RESET[][4] =
+static const char gSubMenu_RESET[LANG_COUNT][RESET_COUNT][4] =
 {
-	"VFO",
-	"ALL"
+	{"VFO","ALL"},
+	{"VFO","TUMU"}
 };
 
 const char * const gSubMenu_F_LOCK[] =
@@ -827,7 +844,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_MDF:
-			strcpy(String, gSubMenu_MDF[gSubMenuSelection]);
+			strcpy(String, gSubMenu_MDF[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_RP_STE:
@@ -846,7 +863,7 @@ void UI_DisplayMenu(void)
 
 		#ifdef ENABLE_ALARM
 			case MENU_AL_MOD:
-				sprintf(String, gSubMenu_AL_MOD[gSubMenuSelection]);
+				sprintf(String, gSubMenu_AL_MOD[gSetting_language][gSubMenuSelection]);
 				break;
 		#endif
 
@@ -865,7 +882,7 @@ void UI_DisplayMenu(void)
 
 #ifdef ENABLE_DTMF_CALLING
 		case MENU_D_RSP:
-			strcpy(String, gSubMenu_D_RSP[gSubMenuSelection]);
+			strcpy(String, gSubMenu_D_RSP[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_D_HOLD:
@@ -877,7 +894,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_PTT_ID:
-			strcpy(String, gSubMenu_PTT_ID[gSubMenuSelection]);
+			strcpy(String, gSubMenu_PTT_ID[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_BAT_TXT:
@@ -899,7 +916,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_ROGER:
-			strcpy(String, gSubMenu_ROGER[gSubMenuSelection]);
+			strcpy(String, gSubMenu_ROGER[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_VOL:
@@ -909,7 +926,7 @@ void UI_DisplayMenu(void)
 			break;
 
 		case MENU_RESET:
-			strcpy(String, gSubMenu_RESET[gSubMenuSelection]);
+			strcpy(String, gSubMenu_RESET[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_F_LOCK:
