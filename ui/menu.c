@@ -355,12 +355,17 @@ const char* const gSubMenu_PTT_ID[] =
 	"APOLLO\nQUINDAR"
 };
 
-const char gSubMenu_PONMSG[][8] =
+static const char gSubMenu_PONMSG[LANG_COUNT][PONMSG_COUNT][8] =
 {
-	"FULL",
+	{"FULL",
 	"MESSAGE",
 	"VOLTAGE",
-	"NONE"
+	"NONE"},
+	{"TUMU",
+	"MESAJ",
+	"VOLTAJ",
+	"YOK"}
+
 };
 
 const char gSubMenu_ROGER[][6] =
@@ -890,7 +895,7 @@ void UI_DisplayMenu(void)
 #endif
 
 		case MENU_PONMSG:
-			strcpy(String, gSubMenu_PONMSG[gSubMenuSelection]);
+			strcpy(String, gSubMenu_PONMSG[gSetting_language][gSubMenuSelection]);
 			break;
 
 		case MENU_ROGER:

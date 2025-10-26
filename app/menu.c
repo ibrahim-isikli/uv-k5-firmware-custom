@@ -147,7 +147,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_MDF:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_MDF) - 1;
+			*pMax = MDF_COUNT - 1;
 			break;
 
 		case MENU_TXP:
@@ -189,7 +189,7 @@ int MENU_GetLimits(uint8_t menu_id, int32_t *pMin, int32_t *pMax)
 
 		case MENU_PONMSG:
 			*pMin = 0;
-			*pMax = ARRAY_SIZE(gSubMenu_PONMSG) - 1;
+			*pMax = PONMSG_COUNT- 1;
 			break;
 
 		case MENU_R_DCS:

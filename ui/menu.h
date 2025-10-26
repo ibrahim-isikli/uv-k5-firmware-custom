@@ -126,7 +126,7 @@ enum
 	MENU_MLONG,
 	MENU_BATTYP
 };
-enum { TXP_COUNT = 3, SFT_D_COUNT = 3, W_N_COUNT=2,OFF_ON_COUNT=2,SAVE_COUNT=5,TOT_COUNT=11,SC_REV_COUNT=3 };
+enum { TXP_COUNT = 3, SFT_D_COUNT = 3, W_N_COUNT=2,OFF_ON_COUNT=2,SAVE_COUNT=5,TOT_COUNT=11,SC_REV_COUNT=3,MDF_COUNT=3,PONMSG_COUNT = 4 };
 enum { LANG_EN = 0, LANG_TR = 1, LANG_COUNT = 2 };
 extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
 extern const t_menu_item MenuList[];
@@ -145,7 +145,7 @@ extern const char* const gSubMenu_RXMode[4];
 #endif
 //extern const char 		 gSubMenu_LANG[LANG_COUNT][LANG_COUNT][8];
 //extern const char        gSubMenu_SC_REV[3][8];
-extern const char* const gSubMenu_MDF[4];
+//extern const char* const gSubMenu_MDF[4];
 #ifdef ENABLE_ALARM
 	extern const char    gSubMenu_AL_MOD[2][5];
 #endif
@@ -153,7 +153,7 @@ extern const char* const gSubMenu_MDF[4];
 extern const char        gSubMenu_D_RSP[4][11];
 #endif
 extern const char* const gSubMenu_PTT_ID[5];
-extern const char        gSubMenu_PONMSG[4][8];
+//extern const char        gSubMenu_PONMSG[4][8];
 extern const char        gSubMenu_ROGER[3][6];
 extern const char        gSubMenu_RESET[2][4];
 extern const char* const gSubMenu_F_LOCK[F_LOCK_LEN];
