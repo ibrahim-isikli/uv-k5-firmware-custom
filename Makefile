@@ -40,6 +40,7 @@ ENABLE_REDUCE_LOW_MID_TX_POWER?= 0
 ENABLE_BYP_RAW_DEMODULATORS   ?= 0
 ENABLE_BLMIN_TMP_OFF          ?= 0
 ENABLE_SCAN_RANGES            ?= 1
+ENABLE_LANG_TR				  ?= 1
 
 # ---- DEBUGGING ----
 ENABLE_AM_FIX_SHOW_DATA       ?= 0
@@ -168,6 +169,10 @@ OBJS += ui/ui.o
 OBJS += ui/welcome.o
 OBJS += version.o
 OBJS += main.o
+ifeq ($(ENABLE_LANG_TR),1)
+	OBJS += ui/language.o
+endif
+
 
 ifeq ($(OS), Windows_NT) # windows
     TOP := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
@@ -377,6 +382,10 @@ endif
 ifeq ($(ENABLE_CUSTOM_MENU_LAYOUT),1)
 	CFLAGS  += -DENABLE_CUSTOM_MENU_LAYOUT
 endif
+ifeq ($(ENABLE_LANG_TR),1)
+	CFLAGS  += -DENABLE_LANG_TR
+endif
+
 
 LDFLAGS =
 LDFLAGS += -z noexecstack -mcpu=cortex-m0 -nostartfiles -Wl,-T,firmware.ld -Wl,--gc-sections
