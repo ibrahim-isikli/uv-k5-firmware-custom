@@ -38,7 +38,7 @@
 #include "ui/language.h"
 
 
-const t_menu_item MenuList[] =
+t_menu_item MenuList[] =
 {
 //   text,     voice ID,                               menu ID
 	{"Step",   VOICE_ID_FREQUENCY_STEP,                MENU_STEP          },
@@ -142,6 +142,49 @@ const t_menu_item MenuList[] =
 
 	{"",       VOICE_ID_INVALID,                       0xff               }  // end of list - DO NOT delete or move this this
 };
+
+#include <string.h>
+#include "ui/language.h"
+
+void UI_Menu_BindLanguage(void)
+{
+#ifdef ENABLE_LANG_TR
+    const bool tr = IS_TR();
+
+    for (int i = 0; MenuList[i].menu_id != 0xff; i++)
+    {
+        if (tr)
+        {
+            if      (strcmp(MenuList[i].name, "Step")   == 0) strcpy(MenuList[i].name, "ADIM");
+            else if (strcmp(MenuList[i].name, "TxPwr")  == 0) strcpy(MenuList[i].name, "GUC");
+            else if (strcmp(MenuList[i].name, "TxCTCS") == 0) strcpy(MenuList[i].name, "CTCSS T");
+            else if (strcmp(MenuList[i].name, "RxCTCS") == 0) strcpy(MenuList[i].name, "CTCSS R");
+            else if (strcmp(MenuList[i].name, "TxDCS")  == 0) strcpy(MenuList[i].name, "DCS T");
+            else if (strcmp(MenuList[i].name, "RxDCS")  == 0) strcpy(MenuList[i].name, "DCS R");
+            else if (strcmp(MenuList[i].name, "Save")   == 0) strcpy(MenuList[i].name, "KAYIT");
+            else if (strcmp(MenuList[i].name, "Reset")  == 0) strcpy(MenuList[i].name, "SIFIRLA");
+            else if (strcmp(MenuList[i].name, "Voice")  == 0) strcpy(MenuList[i].name, "SES");
+            else if (strcmp(MenuList[i].name, "Beep")   == 0) strcpy(MenuList[i].name, "BIP");
+            else if (strcmp(MenuList[i].name, "Language") == 0) strcpy(MenuList[i].name, "DIL");
+        }
+        else
+        {
+            if      (strcmp(MenuList[i].name, "ADIM")     == 0) strcpy(MenuList[i].name, "Step");
+            else if (strcmp(MenuList[i].name, "GUC")      == 0) strcpy(MenuList[i].name, "TxPwr");
+            else if (strcmp(MenuList[i].name, "CTCSS T")  == 0) strcpy(MenuList[i].name, "TxCTCS");
+            else if (strcmp(MenuList[i].name, "CTCSS R")  == 0) strcpy(MenuList[i].name, "RxCTCS");
+            else if (strcmp(MenuList[i].name, "DCS T")    == 0) strcpy(MenuList[i].name, "TxDCS");
+            else if (strcmp(MenuList[i].name, "DCS R")    == 0) strcpy(MenuList[i].name, "RxDCS");
+            else if (strcmp(MenuList[i].name, "KAYIT")    == 0) strcpy(MenuList[i].name, "Save");
+            else if (strcmp(MenuList[i].name, "SIFIRLA")  == 0) strcpy(MenuList[i].name, "Reset");
+            else if (strcmp(MenuList[i].name, "SES")      == 0) strcpy(MenuList[i].name, "Voice");
+            else if (strcmp(MenuList[i].name, "BIP")      == 0) strcpy(MenuList[i].name, "Beep");
+            else if (strcmp(MenuList[i].name, "DIL")      == 0) strcpy(MenuList[i].name, "Language");
+        }
+    }
+#endif
+}
+
 
 const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
 
