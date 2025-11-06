@@ -252,6 +252,9 @@ typedef struct {
 	uint8_t               S0_LEVEL;
 	uint8_t               S9_LEVEL;
 #endif
+#ifdef ENABLE_LANG_TR
+	uint8_t 			  LANG_LEVEL;
+#endif
 } EEPROM_Config_t;
 
 extern EEPROM_Config_t gEeprom;
