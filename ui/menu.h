@@ -176,5 +176,6 @@ extern int               edit_index;
 void UI_DisplayMenu(void);
 int UI_MENU_GetCurrentMenuId();
 uint8_t UI_MENU_GetMenuIdx(uint8_t id);
+void UI_Menu_BindLanguage(void);
 
 #endif
