@@ -1,14 +1,33 @@
 #include "ui/language.h"
-#include "settings.h"   // gEeprom
+#include "settings.h"
+#include <string.h>
 
-lang_t gActiveLang = LANG_EN;
+lang_t gActiveLang = LANG_EN;   // Varsayılan dil
 
-void UI_Language_Apply(uint8_t lang)
+// EEPROM'dan aktif dili okur ve uygular
+/*void UI_Language_InitFromEEPROM(void)
 {
-    gActiveLang = (lang == LANG_TR) ? LANG_TR : LANG_EN;
-}
-
+    if (gEeprom.LANG_LEVEL == 1)
+        gActiveLang = LANG_TR;
+    else
+        gActiveLang = LANG_EN;
+}*/
 void UI_Language_InitFromEEPROM(void)
 {
-    UI_Language_Apply(gEeprom.LANG_LEVEL);   // varsa mevcut alanı kullan
+    gEeprom.LANG_LEVEL = 1;    // Zorla Türkçe
+    gActiveLang = LANG_TR;
 }
+
+
+// Yeni dil uygular ve EEPROM’a yazar
+void UI_Language_Apply(uint8_t lang)
+{
+    if (lang > 1) lang = 0;
+
+    gEeprom.LANG_LEVEL = lang;
+    gActiveLang = (lang == 1) ? LANG_TR : LANG_EN;
+
+    // EEPROM güncelle
+    SETTINGS_SaveSettings();
+}
+

@@ -144,6 +144,11 @@ void SETTINGS_InitEEPROM(void)
 	#endif
 
 	// 0EA8..0EAF
+	#ifdef ENABLE_LANG_TR
+    // 0EB8..0EBF
+    EEPROM_ReadBuffer(0x0EB8, Data, 8);
+    gEeprom.LANG_LEVEL = (Data[0] < 2) ? Data[0] : 0;  // 0: EN, 1: TR
+	#endif
 	EEPROM_ReadBuffer(0x0EA8, Data, 8);
 	#ifdef ENABLE_ALARM
 		gEeprom.ALARM_MODE                 = (Data[0] <  2) ? Data[0] : true;
@@ -590,7 +595,11 @@ void SETTINGS_SaveSettings(void)
 		if (!gSetting_AM_fix)            State[7] &= ~(1u << 5);
 	#endif
 	State[7] = (State[7] & ~(3u << 6)) | ((gSetting_backlight_on_tx_rx & 3u) << 6);
-
+#ifdef ENABLE_LANG_TR
+    memset(State, 0xFF, sizeof(State));
+    State[0] = gEeprom.LANG_LEVEL;
+    EEPROM_WriteBuffer(0x0EB8, State);
+#endif
 	EEPROM_WriteBuffer(0x0F40, State);
 }
 

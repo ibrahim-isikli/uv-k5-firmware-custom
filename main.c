@@ -49,6 +49,7 @@
 #include "ui/lock.h"
 #include "ui/welcome.h"
 #include "ui/menu.h"
+#include "ui/language.h"
 void _putchar(__attribute__((unused)) char c)
 {
 
@@ -95,7 +96,10 @@ void Main(void)
 	SETTINGS_InitEEPROM();
 	SETTINGS_WriteBuildOptions();
 	SETTINGS_LoadCalibration();
-
+#ifdef ENABLE_LANG_TR
+    UI_Language_InitFromEEPROM();   // EEPROM’daki dili gAskForConfirmation gibi globale aktarır
+    UI_Menu_BindLanguage();         // Menü metinlerini seçilen dile göre günceller
+#endif
 	RADIO_ConfigureChannel(0, VFO_CONFIGURE_RELOAD);
 	RADIO_ConfigureChannel(1, VFO_CONFIGURE_RELOAD);
 
