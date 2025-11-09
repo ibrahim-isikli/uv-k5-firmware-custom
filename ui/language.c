@@ -2,7 +2,7 @@
 #include "settings.h"
 #include <string.h>
 
-lang_t gActiveLang = LANG_EN;   // Varsayılan dil
+lang_t gActiveLang = LANG_EN;   //  default language
 
 static const char * const menu_texts_en[] = {
 	"Step",
@@ -138,7 +138,7 @@ static const char * const menu_texts_tr[] = {
 	"TusKILIT",
 	"TxSURE",
 	"PILKORU",
-	"MIIKROF", // I'lar genis kullanildi
+	"MIIKROF", 
 #ifdef ENABLE_AUDIO_BAR
 	"MIKBAR",
 #endif
@@ -216,15 +216,13 @@ void UI_Language_InitFromEEPROM(void)
 #endif
 }
 
-// Yeni dil uygular ve EEPROM’a yazar
 void UI_Language_Apply(uint8_t lang)
 {
     if (lang > 1) lang = 0;
 
     gEeprom.LANG_LEVEL = lang;
     gActiveLang = (lang == 1) ? LANG_TR : LANG_EN;
-
-    // EEPROM güncelle
+    
     SETTINGS_SaveSettings();
 }
 
