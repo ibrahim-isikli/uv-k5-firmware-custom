@@ -5,18 +5,18 @@
 lang_t gActiveLang = LANG_EN;   // Varsayılan dil
 
 // EEPROM'dan aktif dili okur ve uygular
-/*void UI_Language_InitFromEEPROM(void)
+void UI_Language_InitFromEEPROM(void)
 {
     if (gEeprom.LANG_LEVEL == 1)
         gActiveLang = LANG_TR;
     else
         gActiveLang = LANG_EN;
-}*/
-void UI_Language_InitFromEEPROM(void)
+}
+/*void UI_Language_InitFromEEPROM(void)
 {
     gEeprom.LANG_LEVEL = 1;    // Zorla Türkçe
     gActiveLang = LANG_TR;
-}
+}*/
 
 
 // Yeni dil uygular ve EEPROM’a yazar
