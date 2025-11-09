@@ -38,5 +38,5 @@ void UI_Language_Apply(uint8_t lang);
 
 // Menü yazılarını aktif dile göre bağlar
 void UI_Menu_BindLanguage(void);
-
+const char *UI_Language_GetMenuText(uint8_t index);
 #endif // UI_LANGUAGE_H

@@ -147,8 +147,19 @@ t_menu_item MenuList[] =
 
 #include <string.h>
 #include "ui/language.h"
-
 void UI_Menu_BindLanguage(void)
+{
+#ifdef ENABLE_LANG_TR
+    for (uint8_t i = 0; MenuList[i].name[0] != '\0'; i++)
+    {
+        const char *translated = UI_Language_GetMenuText(i);
+        if (translated && strlen(translated) > 0)
+            strncpy(MenuList[i].name, translated, sizeof(MenuList[i].name) - 1);
+    }
+#endif
+}
+
+/*void UI_Menu_BindLanguage(void)
 {
 #ifdef ENABLE_LANG_TR
     const bool tr = IS_TR();
@@ -185,7 +196,7 @@ void UI_Menu_BindLanguage(void)
         }
     }
 #endif
-}
+}*/
 
 
 const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
