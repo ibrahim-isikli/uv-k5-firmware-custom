@@ -568,12 +568,10 @@ void MENU_AcceptSetting(void)
 		#ifdef ENABLE_LANG_TR
 			case MENU_LANG:
 				gEeprom.LANG_LEVEL = gSubMenuSelection;
-				// EEPROM'dan dil başlangıç işlevini tekrar çağırıp bağla
 				UI_Language_InitFromEEPROM();
 				UI_Menu_BindLanguage();
 				gUpdateDisplay = true;
 				gFlagRefreshSetting = true;
-				// Ayarların kalıcı olması için:
 				gRequestSaveSettings = true;
 				break;
 		#endif
